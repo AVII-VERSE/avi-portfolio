@@ -10,9 +10,6 @@ A performant, responsive web application designed with a neobrutalist aesthetic,
 
 - **Role:** VAPT & Red Teaming Specialist
 - **Specializations:** Vulnerability Assessment & Penetration Testing, Offensive Tooling, Linux Security, Security Automation
-- **GitHub:** [@AVII-VERSE](https://github.com/AVII-VERSE)
-- **LinkedIn:** [singhavinash10](https://linkedin.com/in/singhavinash10)
-- **Medium:** [@avinashsingh10](https://medium.com/@avinashsingh10)
 
 ---
 
