@@ -5,10 +5,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Reveal } from "@/components/animations/Reveal";
-import emailjs from "@emailjs/browser";
 import { toast } from "@/components/ui/use-toast";
 import { Send, CheckCircle2 } from "lucide-react";
-import { isEmailJSConfigured, getEmailJSConfig } from "@/lib/env";
 import { EMAIL } from "@/constants";
 
 const ContactSection = () => {
@@ -32,26 +30,25 @@ const ContactSection = () => {
       ? `[Portfolio Contact] ${subject.trim()}`
       : `[Portfolio Contact] Message from ${name.trim()}`;
 
-    // Direct EmailJS send connected to Gmail
-    if (isEmailJSConfigured()) {
-      try {
-        const config = getEmailJSConfig();
-        const templateParams = {
-          from_name: name.trim(),
-          from_email: email.trim(),
-          reply_to: email.trim(),
-          subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
-          company: company.trim() || "Individual / Not specified",
+    // Direct Gmail SMTP via serverless endpoint (/api/contact)
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: name.trim(),
+          email: email.trim(),
+          subject: subject.trim(),
+          company: company.trim(),
           message: message.trim(),
-        };
+        }),
+      });
 
-        await emailjs.send(
-          config.serviceId,
-          config.templateId,
-          templateParams,
-          { publicKey: config.publicKey }
-        );
+      const result = await response.json().catch(() => ({}));
 
+      if (response.ok && result.success) {
         setSuccess(true);
         toast({
           title: "Message sent!",
@@ -63,37 +60,27 @@ const ContactSection = () => {
         setCompany("");
         setMessage("");
         if (formRef.current) formRef.current.reset();
-      } catch (err) {
-        console.error("EmailJS send error:", err);
-        setError(true);
-        toast({
-          variant: "destructive",
-          title: "Delivery issue",
-          description: "Could not send via EmailJS. Redirecting to mail app...",
-        });
-        window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-          emailSubject
-        )}&body=${encodeURIComponent(
-          `Hi Avinash,\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "N/A"}\n\nMessage:\n${message}`
-        )}`;
-      } finally {
-        setIsLoading(false);
+      } else {
+        throw new Error(result.error || "Failed to deliver message via Gmail SMTP");
       }
-      return;
+    } catch (err: any) {
+      console.error("Direct Gmail delivery error:", err);
+      setError(true);
+      toast({
+        variant: "destructive",
+        title: "Direct Gmail delivery issue",
+        description: err.message || "Opening your mail client directly...",
+      });
+
+      // Direct fallback: Open email client with pre-filled content
+      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
+        emailSubject
+      )}&body=${encodeURIComponent(
+        `Hi Avinash,\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "N/A"}\n\nMessage:\n${message}`
+      )}`;
+    } finally {
+      setIsLoading(false);
     }
-
-    // If EmailJS keys are not yet added in environment variables
-    toast({
-      title: "Email service pending setup",
-      description: "API keys not yet configured. Opening your mail client...",
-    });
-
-    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-      emailSubject
-    )}&body=${encodeURIComponent(
-      `Hi Avinash,\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "N/A"}\n\nMessage:\n${message}`
-    )}`;
-    setIsLoading(false);
   };
 
   return (
