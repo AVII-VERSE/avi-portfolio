@@ -9,14 +9,15 @@ import SkillsSection from "./SkillsSection";
 import ExperienceSection from "./ExperienceSection";
 import ProjectsSection from "./ProjectsSection"
 import CertificationsSection from "./CertificationsSection";
-import ResumeSection from "./ResumeSection";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
+import ResumeModal from "./ResumeModal";
 import { SECTIONS } from "@/constants";
 
 const Portfolio = () => {
   const [currentSection, setCurrentSection] = useState("hero");
+  const [isResumeModalOpen, setIsResumeModalOpen] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -57,7 +58,10 @@ const Portfolio = () => {
 
   return (
     <div className="relative">
-      <Header onSectionClick={scrollToSection} />
+      <Header 
+        onSectionClick={scrollToSection} 
+        onResumeClick={() => setIsResumeModalOpen(true)} 
+      />
       <Navigation currentSection={currentSection} onSectionClick={scrollToSection} />
       <SocialSidebar />
       <EmailSidebar />
@@ -69,11 +73,16 @@ const Portfolio = () => {
         <ExperienceSection />
         <ProjectsSection />
         <CertificationsSection />
-        <ResumeSection />
         <BlogSection />
         <ContactSection />
       </main>
       <Footer />
+
+      {/* Resume Popup Modal */}
+      <ResumeModal 
+        isOpen={isResumeModalOpen} 
+        onClose={() => setIsResumeModalOpen(false)} 
+      />
     </div>
   );
 };

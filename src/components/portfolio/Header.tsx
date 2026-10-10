@@ -9,9 +9,10 @@ import { motion, AnimatePresence } from "framer-motion";
 
 interface HeaderProps {
   onSectionClick: (section: string) => void;
+  onResumeClick?: () => void;
 }
 
-const Header = ({ onSectionClick }: HeaderProps) => {
+const Header = ({ onSectionClick, onResumeClick }: HeaderProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Prevent background scroll when mobile sidebar is open
@@ -70,7 +71,7 @@ const Header = ({ onSectionClick }: HeaderProps) => {
               ))}
               <ThemeToggle />
               <button
-                onClick={() => onSectionClick("resume")}
+                onClick={() => (onResumeClick ? onResumeClick() : onSectionClick("resume"))}
                 className="neobrutalist-button neobrutalist-button-primary px-4 py-2 text-xs font-bold inline-flex items-center gap-1.5 shadow-sm"
               >
                 <span className="relative z-10">Resume</span>
@@ -142,7 +143,10 @@ const Header = ({ onSectionClick }: HeaderProps) => {
               <div className="pt-6 border-t border-border space-y-5">
                 {/* Resume Link */}
                 <button
-                  onClick={() => handleNavClick("resume")}
+                  onClick={() => {
+                    setMobileMenuOpen(false);
+                    if (onResumeClick) onResumeClick();
+                  }}
                   className="w-full neobrutalist-button neobrutalist-button-primary py-3 text-center text-sm font-bold flex items-center justify-center gap-2 group"
                 >
                   <FileText className="w-4 h-4 relative z-10" />
