@@ -36,7 +36,7 @@ const Header = ({ onSectionClick }: HeaderProps) => {
   return (
     <>
       <header className="fixed top-0 w-full z-40 bg-background/90 backdrop-blur-md border-b border-border/40">
-        <div className="container mx-auto px-4 sm:px-8 py-3.5 sm:py-4">
+        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="animate-fade-in">
