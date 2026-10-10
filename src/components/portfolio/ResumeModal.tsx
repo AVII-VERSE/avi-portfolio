@@ -51,13 +51,13 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 15 }}
             transition={{ duration: 0.25, ease: "easeOut" }}
-            className="relative w-full max-w-5xl max-h-[92vh] bg-card border-2 border-border shadow-brutal flex flex-col z-10 overflow-hidden"
+            className="relative w-full max-w-4xl h-[92vh] bg-card border-2 border-border shadow-brutal flex flex-col z-10 overflow-hidden"
             role="dialog"
             aria-modal="true"
             aria-label="Resume Preview Modal"
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b-2 border-border bg-card">
+            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b-2 border-border bg-card shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="p-1.5 bg-primary/10 border border-primary/30">
                   <FileText className="w-4 h-4 text-primary" />
@@ -105,33 +105,13 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            {/* Modal Body: PDF Viewer */}
-            <div className="flex-1 w-full h-[76vh] bg-muted/20 relative overflow-hidden">
-              <object
-                data={`${pdfSrc}#toolbar=1&navpanes=0`}
-                type="application/pdf"
-                className="w-full h-full border-0"
-              >
-                <iframe
-                  title="Avinash Singh CV"
-                  src={`${pdfSrc}#toolbar=1&navpanes=0`}
-                  className="w-full h-full border-0"
-                >
-                  <div className="p-8 text-center space-y-4">
-                    <p className="text-sm text-foreground">
-                      Unable to display PDF directly in your browser.
-                    </p>
-                    <a
-                      href={pdfSrc}
-                      download="Avinash_Singh_CV.pdf"
-                      className="neobrutalist-button neobrutalist-button-primary px-5 py-2.5 text-xs inline-flex items-center gap-2"
-                    >
-                      <Download className="w-4 h-4 relative z-10" />
-                      <span className="relative z-10">Download CV (PDF)</span>
-                    </a>
-                  </div>
-                </iframe>
-              </object>
+            {/* Modal Body: Full-Height PDF Viewer */}
+            <div className="flex-1 w-full min-h-0 bg-muted/20 relative">
+              <iframe
+                title="Avinash Singh CV"
+                src={`${pdfSrc}#view=FitH`}
+                className="w-full h-full border-0 block"
+              />
             </div>
           </motion.div>
         </div>
