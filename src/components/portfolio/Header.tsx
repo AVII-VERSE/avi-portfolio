@@ -106,10 +106,18 @@ const Header = ({ onSectionClick, onResumeClick }: HeaderProps) => {
             >
               {/* Drawer Top */}
               <div>
-                <div className="flex items-center justify-between pb-6 border-b border-border">
-                  <span className="font-mono text-xs uppercase tracking-widest text-primary font-bold">
-                    // Navigation
-                  </span>
+                <div className="flex items-center justify-between pb-5 border-b border-border">
+                  <div className="flex items-center gap-3">
+                    <Logo size="sm" />
+                    <div>
+                      <p className="font-bold text-base tracking-tight text-foreground leading-none">
+                        Avinash Singh
+                      </p>
+                      <span className="text-[11px] font-mono text-primary font-bold uppercase tracking-wider">
+                        Security Analyst
+                      </span>
+                    </div>
+                  </div>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
                     className="p-1.5 border-2 border-border hover:border-primary text-foreground hover:text-primary transition-colors"
