@@ -12,4 +12,13 @@ export default defineConfig({
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
+  build: {
+    sourcemap: false,
+    minify: "esbuild",
+    cssMinify: true,
+  },
+  esbuild: {
+    drop: ["console", "debugger"],
+    legalComments: "none",
+  },
 });

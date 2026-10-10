@@ -90,7 +90,12 @@ export default async function handler(req: any, res: any) {
 
   try {
     const data = req.body || (await parseBody(req));
-    let { name, email, subject, company, message } = data;
+    let { name, email, subject, company, message, _hp_trap, website_url } = data;
+
+    // Honeypot bot protection: if hidden field is filled, silently succeed without sending email
+    if (_hp_trap || website_url) {
+      return res.status(200).json({ success: true, message: "Email sent successfully!" });
+    }
 
     // Type and existence checks
     if (!name || typeof name !== "string" || !name.trim()) {

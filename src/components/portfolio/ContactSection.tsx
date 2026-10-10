@@ -15,6 +15,7 @@ const ContactSection = () => {
   const [subject, setSubject] = useState("");
   const [company, setCompany] = useState("");
   const [message, setMessage] = useState("");
+  const [hpTrap, setHpTrap] = useState("");
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -43,6 +44,7 @@ const ContactSection = () => {
           subject: subject.trim(),
           company: company.trim(),
           message: message.trim(),
+          _hp_trap: hpTrap,
         }),
       });
 
@@ -131,6 +133,18 @@ const ContactSection = () => {
           <Reveal>
             <div className="neobrutalist-card p-4 sm:p-6 md:p-8 relative overflow-hidden bg-card">
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                {/* Anti-Bot Honeypot Trap (Hidden from genuine human users) */}
+                <div className="hidden" aria-hidden="true" style={{ display: "none" }}>
+                  <input
+                    type="text"
+                    name="_hp_trap"
+                    value={hpTrap}
+                    onChange={(e) => setHpTrap(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                  />
+                </div>
+
                 {/* Row 1: Name & Email */}
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>

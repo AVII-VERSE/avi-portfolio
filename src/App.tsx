@@ -13,6 +13,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import LoadingScreen from "@/components/LoadingScreen";
 import { useTheme } from "@/contexts/ThemeContext";
 import SmoothScroll from "@/components/effects/SmoothScroll";
+import { useSecurityShield } from "@/hooks/useSecurityShield";
 
 // @ts-ignore
 import { AnimatePresence } from "framer-motion";
@@ -22,6 +23,9 @@ const queryClient = new QueryClient();
 const App = () => {
   const { theme } = useTheme();
   const [isLoading, setIsLoading] = useState(true);
+
+  // Activate anti-tamper security shield
+  useSecurityShield();
 
   useEffect(() => {
     if (typeof window !== "undefined") {
