@@ -7,9 +7,9 @@ const ExperienceSection = () => {
       role: "Business Development Executive (BDE)",
       date: "Sept 2025 – May 2026",
       description: [
-        "Identified and bid on software projects through freelancing platforms and online marketplaces.",
-        "Prepared technical project proposals based on client requirements and coordinated with development teams on estimates and execution.",
-        "Communicated with clients regarding project scope, timelines, requirements, and technical discussions.",
+        "Spearheaded client acquisition and strategic business partnerships, analyzing enterprise technical requirements for customized software solutions.",
+        "Collaborated closely with engineering and architecture teams to develop comprehensive technical proposals, Statements of Work (SOW), and cost estimations.",
+        "Managed end-to-end client communications, project scope definitions, deliverables, and relationship management.",
       ],
     },
   ];
