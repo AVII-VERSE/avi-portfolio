@@ -32,57 +32,30 @@ const ContactSection = () => {
       ? `[Portfolio Contact] ${subject.trim()}`
       : `[Portfolio Contact] Message from ${name.trim()}`;
 
-    // 1. If EmailJS is configured, send via EmailJS
-    if (isEmailJSConfigured() && formRef.current) {
+    // Direct EmailJS send connected to Gmail
+    if (isEmailJSConfigured()) {
       try {
         const config = getEmailJSConfig();
-        await emailjs.sendForm(config.serviceId, config.templateId, formRef.current, {
-          publicKey: config.publicKey,
-        });
+        const templateParams = {
+          from_name: name.trim(),
+          from_email: email.trim(),
+          reply_to: email.trim(),
+          subject: subject.trim() || `Portfolio Inquiry from ${name.trim()}`,
+          company: company.trim() || "Individual / Not specified",
+          message: message.trim(),
+        };
+
+        await emailjs.send(
+          config.serviceId,
+          config.templateId,
+          templateParams,
+          { publicKey: config.publicKey }
+        );
 
         setSuccess(true);
         toast({
           title: "Message sent!",
-          description: "Thanks! I'll get back to you soon.",
-        });
-        setName("");
-        setEmail("");
-        setSubject("");
-        setCompany("");
-        setMessage("");
-        formRef.current.reset();
-        setIsLoading(false);
-        return;
-      } catch (err) {
-        console.warn("EmailJS delivery failed, falling back to direct inbox delivery...", err);
-      }
-    }
-
-    // 2. Direct Inbox Delivery to as8009067@gmail.com via FormSubmit
-    try {
-      const response = await fetch(`https://formsubmit.co/ajax/${EMAIL}`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Accept: "application/json",
-        },
-        body: JSON.stringify({
-          name: name.trim(),
-          email: email.trim(),
-          subject: subject.trim() || "Portfolio Contact Inquiry",
-          organization_or_company: company.trim() || "Individual / Not specified",
-          message: message.trim(),
-          _subject: emailSubject,
-          _replyto: email.trim(),
-          _captcha: "false",
-        }),
-      });
-
-      if (response.ok) {
-        setSuccess(true);
-        toast({
-          title: "Message delivered!",
-          description: "Your message has been sent directly to Avinash's inbox.",
+          description: "Your message has been delivered directly to Avinash's Gmail inbox.",
         });
         setName("");
         setEmail("");
@@ -90,28 +63,37 @@ const ContactSection = () => {
         setCompany("");
         setMessage("");
         if (formRef.current) formRef.current.reset();
-      } else {
-        throw new Error("Delivery response not ok");
+      } catch (err) {
+        console.error("EmailJS send error:", err);
+        setError(true);
+        toast({
+          variant: "destructive",
+          title: "Delivery issue",
+          description: "Could not send via EmailJS. Redirecting to mail app...",
+        });
+        window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
+          emailSubject
+        )}&body=${encodeURIComponent(
+          `Hi Avinash,\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "N/A"}\n\nMessage:\n${message}`
+        )}`;
+      } finally {
+        setIsLoading(false);
       }
-    } catch (err) {
-      console.error("Direct delivery error:", err);
-      setError(true);
-      toast({
-        variant: "destructive",
-        title: "Direct delivery fallback",
-        description: "Opening your email app to send directly...",
-      });
-
-      // 3. Fallback: Open mail app with pre-filled content
-      const fallbackMailto = `mailto:${EMAIL}?subject=${encodeURIComponent(
-        emailSubject
-      )}&body=${encodeURIComponent(
-        `Hi Avinash,\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "N/A"}\n\nMessage:\n${message}`
-      )}`;
-      window.location.href = fallbackMailto;
-    } finally {
-      setIsLoading(false);
+      return;
     }
+
+    // If EmailJS keys are not yet added in environment variables
+    toast({
+      title: "Email service pending setup",
+      description: "API keys not yet configured. Opening your mail client...",
+    });
+
+    window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
+      emailSubject
+    )}&body=${encodeURIComponent(
+      `Hi Avinash,\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "N/A"}\n\nMessage:\n${message}`
+    )}`;
+    setIsLoading(false);
   };
 
   return (
