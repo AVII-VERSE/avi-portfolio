@@ -68,7 +68,7 @@ const Portfolio = () => {
 
       <main className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-screen-xl">
         <HeroSection onSectionClick={scrollToSection} />
-        <AboutSection />
+        <AboutSection onResumeClick={() => setIsResumeModalOpen(true)} />
         <SkillsSection />
         <ExperienceSection />
         <ProjectsSection />

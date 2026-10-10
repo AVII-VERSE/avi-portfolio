@@ -78,7 +78,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
                   href={pdfSrc}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="hidden sm:inline-flex neobrutalist-button neobrutalist-button-secondary px-3.5 py-1.5 text-xs items-center gap-1.5"
+                  className="inline-flex neobrutalist-button neobrutalist-button-secondary px-2.5 sm:px-3.5 py-1.5 text-xs items-center gap-1.5"
                   title="Open in new tab"
                 >
                   <ExternalLink className="w-3.5 h-3.5 relative z-10" />
@@ -106,11 +106,23 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
             </div>
 
             {/* Modal Body: Full-Height PDF Viewer */}
-            <div className="flex-1 w-full min-h-0 bg-muted/20 relative">
+            <div className="flex-1 w-full min-h-0 bg-muted/20 relative flex flex-col">
+              <div className="sm:hidden px-3 py-1.5 bg-primary/10 border-b border-primary/20 flex items-center justify-between text-xs shrink-0">
+                <span className="text-foreground/90 font-medium">Avinash_CV.pdf</span>
+                <a
+                  href={pdfSrc}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-primary font-bold underline flex items-center gap-1"
+                >
+                  <ExternalLink className="w-3 h-3" />
+                  Open Fullscreen
+                </a>
+              </div>
               <iframe
                 title="Avinash Singh CV"
                 src={`${pdfSrc}#view=FitH`}
-                className="w-full h-full border-0 block"
+                className="w-full h-full border-0 block flex-1"
               />
             </div>
           </motion.div>

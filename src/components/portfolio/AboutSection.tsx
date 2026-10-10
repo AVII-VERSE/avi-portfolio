@@ -15,7 +15,11 @@ import { Link } from "react-router-dom";
 import { Reveal } from "@/components/animations/Reveal";
 import SecurityIllustration from "./SecurityIllustration";
 
-const AboutSection = () => {
+interface AboutSectionProps {
+  onResumeClick?: () => void;
+}
+
+const AboutSection = ({ onResumeClick }: AboutSectionProps) => {
   const interests = [
     {
       icon: Brain,
@@ -93,12 +97,19 @@ const AboutSection = () => {
               </div>
 
               <div className="mt-8 flex flex-wrap items-center justify-between gap-4">
-                <Link to="/resume">
-                  <button className="neobrutalist-button neobrutalist-button-primary px-6 py-2.5 flex items-center gap-2 group">
-                    <Download className="w-4 h-4 transition-transform group-hover:translate-y-0.5" />
-                    <span className="relative z-10">View Resume</span>
-                  </button>
-                </Link>
+                <button
+                  onClick={() => {
+                    if (onResumeClick) {
+                      onResumeClick();
+                    } else {
+                      window.open(`${import.meta.env.BASE_URL}Avinash_CV.pdf`, "_blank");
+                    }
+                  }}
+                  className="neobrutalist-button neobrutalist-button-primary px-6 py-2.5 flex items-center gap-2 group"
+                >
+                  <Download className="w-4 h-4 transition-transform group-hover:translate-y-0.5 relative z-10" />
+                  <span className="relative z-10">View Resume (PDF)</span>
+                </button>
               </div>
             </div>
           </Reveal>
