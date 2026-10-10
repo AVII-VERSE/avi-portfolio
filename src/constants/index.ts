@@ -29,7 +29,7 @@ export const NAV_ITEMS = [
   { id: "contact", label: "Contact" },
 ] as const;
 
-export const SECTIONS = ["hero", "about", "skills", "experience", "projects", "certifications", "blog", "contact"] as const;
+export const SECTIONS = ["hero", "about", "skills", "experience", "projects", "certifications", "resume", "blog", "contact"] as const;
 
 export const EMAIL = "as8009067@gmail.com";
 

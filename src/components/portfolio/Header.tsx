@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Logo from "./Logo";
-import { Link } from "react-router-dom";
 import { NAV_ITEMS, SOCIAL_LINKS, EMAIL } from "@/constants";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import { Menu, X, ArrowRight, Mail, FileText } from "lucide-react";
@@ -36,8 +34,8 @@ const Header = ({ onSectionClick }: HeaderProps) => {
   return (
     <>
       <header className="fixed top-0 w-full z-40 bg-background/90 backdrop-blur-md border-b border-border/40">
-        <div className="container mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4">
-          <div className="flex items-center justify-between">
+        <div className="w-full px-4 sm:px-8 lg:px-12 py-3.5 sm:py-4">
+          <div className="flex items-center justify-between w-full">
             {/* Logo */}
             <div className="animate-fade-in">
               <Logo size="md" />
@@ -71,14 +69,12 @@ const Header = ({ onSectionClick }: HeaderProps) => {
                 </button>
               ))}
               <ThemeToggle />
-              <Button
-                asChild
-                variant="outline"
-                size="sm"
-                className="border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-colors font-semibold"
+              <button
+                onClick={() => onSectionClick("resume")}
+                className="neobrutalist-button neobrutalist-button-primary px-4 py-2 text-xs font-bold inline-flex items-center gap-1.5 shadow-sm"
               >
-                <Link to="/resume">Resume</Link>
-              </Button>
+                <span className="relative z-10">Resume</span>
+              </button>
             </nav>
           </div>
         </div>
@@ -145,14 +141,13 @@ const Header = ({ onSectionClick }: HeaderProps) => {
               {/* Drawer Bottom Actions */}
               <div className="pt-6 border-t border-border space-y-5">
                 {/* Resume Link */}
-                <Link
-                  to="/resume"
-                  onClick={() => setMobileMenuOpen(false)}
+                <button
+                  onClick={() => handleNavClick("resume")}
                   className="w-full neobrutalist-button neobrutalist-button-primary py-3 text-center text-sm font-bold flex items-center justify-center gap-2 group"
                 >
                   <FileText className="w-4 h-4 relative z-10" />
                   <span className="relative z-10">View Resume</span>
-                </Link>
+                </button>
 
                 {/* Social Icons Row */}
                 <div className="flex items-center justify-center gap-3 pt-2">

@@ -9,6 +9,7 @@ import SkillsSection from "./SkillsSection";
 import ExperienceSection from "./ExperienceSection";
 import ProjectsSection from "./ProjectsSection"
 import CertificationsSection from "./CertificationsSection";
+import ResumeSection from "./ResumeSection";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
@@ -68,6 +69,7 @@ const Portfolio = () => {
         <ExperienceSection />
         <ProjectsSection />
         <CertificationsSection />
+        <ResumeSection />
         <BlogSection />
         <ContactSection />
       </main>
