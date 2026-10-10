@@ -124,9 +124,9 @@ const AboutSection = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div className="space-y-2 relative pl-4 border-l-2 border-primary/20">
                   <span className="absolute -left-[5px] top-1.5 w-2 h-2 rounded-none bg-primary shadow-brutal" />
-                  <p className="text-foreground font-semibold">Master's in Cybersecurity</p>
+                  <p className="text-foreground font-semibold">M.Tech in Cyber Security</p>
                   <p className="text-sm text-foreground/60">
-                    Advanced study in Cybersecurity
+                    Marwadi University, Rajkot
                   </p>
                   <span className="stat-badge text-xs inline-block mt-2">
                     Ongoing
