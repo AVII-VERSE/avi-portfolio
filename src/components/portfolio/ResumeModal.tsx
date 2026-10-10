@@ -10,6 +10,7 @@ interface ResumeModalProps {
 
 const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   const pdfSrc = `${import.meta.env.BASE_URL}Avinash_CV.pdf`;
+  const previewImg = `${import.meta.env.BASE_URL}resume-preview.png`;
 
   // Lock background scroll when modal is open & handle Esc key
   useEffect(() => {
@@ -33,7 +34,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-6">
           {/* Backdrop */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -57,7 +58,7 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
             aria-label="Resume Preview Modal"
           >
             {/* Modal Header */}
-            <div className="flex items-center justify-between px-4 sm:px-6 py-3.5 border-b-2 border-border bg-card shrink-0">
+            <div className="flex items-center justify-between px-3 sm:px-6 py-3 border-b-2 border-border bg-card shrink-0">
               <div className="flex items-center gap-2.5">
                 <div className="p-1.5 bg-primary/10 border border-primary/30">
                   <FileText className="w-4 h-4 text-primary" />
@@ -79,10 +80,10 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex neobrutalist-button neobrutalist-button-secondary px-2.5 sm:px-3.5 py-1.5 text-xs items-center gap-1.5"
-                  title="Open in new tab"
+                  title="Open PDF in new tab"
                 >
                   <ExternalLink className="w-3.5 h-3.5 relative z-10" />
-                  <span className="relative z-10 font-bold">Open</span>
+                  <span className="relative z-10 font-bold">Open PDF</span>
                 </a>
 
                 <a
@@ -105,25 +106,16 @@ const ResumeModal: React.FC<ResumeModalProps> = ({ isOpen, onClose }) => {
               </div>
             </div>
 
-            {/* Modal Body: Full-Height PDF Viewer */}
-            <div className="flex-1 w-full min-h-0 bg-muted/20 relative flex flex-col">
-              <div className="sm:hidden px-3 py-1.5 bg-primary/10 border-b border-primary/20 flex items-center justify-between text-xs shrink-0">
-                <span className="text-foreground/90 font-medium">Avinash_CV.pdf</span>
-                <a
-                  href={pdfSrc}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary font-bold underline flex items-center gap-1"
-                >
-                  <ExternalLink className="w-3 h-3" />
-                  Open Fullscreen
-                </a>
+            {/* Modal Body: Scrollable High-Res Document Preview (Works on 100% of devices) */}
+            <div className="flex-1 w-full min-h-0 bg-neutral-900/90 overflow-y-auto p-2 sm:p-5 flex justify-center items-start">
+              <div className="relative max-w-[800px] w-full bg-white shadow-2xl border border-border/40 overflow-hidden my-auto">
+                <img
+                  src={previewImg}
+                  alt="Avinash Singh Resume Preview"
+                  className="w-full h-auto block select-none"
+                  loading="eager"
+                />
               </div>
-              <iframe
-                title="Avinash Singh CV"
-                src={`${pdfSrc}#view=FitH`}
-                className="w-full h-full border-0 block flex-1"
-              />
             </div>
           </motion.div>
         </div>

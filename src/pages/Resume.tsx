@@ -4,6 +4,7 @@ import { ArrowLeft, Download, ExternalLink, Globe, FileText } from "lucide-react
 
 const Resume: React.FC = () => {
   const pdfSrc = `${import.meta.env.BASE_URL}Avinash_CV.pdf`;
+  const previewImg = `${import.meta.env.BASE_URL}resume-preview.png`;
 
   return (
     <section className="min-h-screen py-8 sm:py-12 px-3 sm:px-6 bg-background">
@@ -26,7 +27,7 @@ const Resume: React.FC = () => {
               className="flex-1 sm:flex-none neobrutalist-button neobrutalist-button-secondary px-4 py-2 text-xs inline-flex items-center justify-center gap-2"
             >
               <ExternalLink className="w-4 h-4 relative z-10" />
-              <span className="relative z-10 font-bold">Open Fullscreen PDF</span>
+              <span className="relative z-10 font-bold">Open PDF Fullscreen</span>
             </a>
 
             <a
@@ -40,30 +41,16 @@ const Resume: React.FC = () => {
           </div>
         </div>
 
-        {/* Real PDF Resume Viewer Container */}
-        <div className="w-full h-[80vh] sm:h-[84vh] bg-card border-2 border-border shadow-brutal flex flex-col overflow-hidden">
-          {/* Mobile Helper Bar */}
-          <div className="sm:hidden px-3 py-2 bg-primary/10 border-b border-primary/20 flex items-center justify-between text-xs">
-            <span className="text-foreground/90 font-medium flex items-center gap-1.5">
-              <FileText className="w-3.5 h-3.5 text-primary" />
-              Avinash_CV.pdf
-            </span>
-            <a
-              href={pdfSrc}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-primary font-bold underline flex items-center gap-1"
-            >
-              <ExternalLink className="w-3 h-3" />
-              Open Fullscreen
-            </a>
+        {/* Real Document Preview Container (100% device compatibility) */}
+        <div className="w-full bg-neutral-900/90 border-2 border-border shadow-brutal flex justify-center p-2 sm:p-6 overflow-hidden">
+          <div className="relative max-w-[850px] w-full bg-white shadow-2xl border border-border/40 overflow-hidden my-auto">
+            <img
+              src={previewImg}
+              alt="Avinash Singh Resume"
+              className="w-full h-auto block select-none"
+              loading="eager"
+            />
           </div>
-
-          <iframe
-            title="Avinash Singh CV"
-            src={`${pdfSrc}#view=FitH`}
-            className="w-full h-full border-0 block flex-1"
-          />
         </div>
 
         {/* Footer Note */}
