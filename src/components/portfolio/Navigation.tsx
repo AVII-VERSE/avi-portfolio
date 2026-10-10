@@ -8,7 +8,7 @@ interface NavigationProps {
 
 const Navigation = ({ currentSection, onSectionClick }: NavigationProps) => {
   return (
-    <div className="fixed right-6 top-1/2 -translate-y-1/2 z-50">
+    <div className="hidden lg:block fixed right-6 top-1/2 -translate-y-1/2 z-50">
       <div className="flex flex-col items-center space-y-4">
         {SECTIONS.map((sectionId) => (
           <button

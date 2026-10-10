@@ -19,6 +19,19 @@ const Header = ({ onSectionClick }: HeaderProps) => {
             <Logo size="md" />
           </div>
 
+          {/* Mobile Actions */}
+          <div className="flex md:hidden items-center gap-2">
+            <ThemeToggle />
+            <Button
+              asChild
+              variant="outline"
+              size="sm"
+              className="border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground text-xs px-2.5 py-1 h-8"
+            >
+              <Link to="/resume">Resume</Link>
+            </Button>
+          </div>
+
           <nav className="hidden md:flex items-center space-x-8">
             {NAV_ITEMS.map((item) => (
               <button

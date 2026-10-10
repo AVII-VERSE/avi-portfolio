@@ -12,7 +12,6 @@ import CertificationsSection from "./CertificationsSection";
 import BlogSection from "./BlogSection";
 import ContactSection from "./ContactSection";
 import Footer from "./Footer";
-import MobileActionBar from "./MobileActionBar";
 import { SECTIONS } from "@/constants";
 
 const Portfolio = () => {
@@ -73,7 +72,6 @@ const Portfolio = () => {
         <ContactSection />
       </main>
       <Footer />
-      <MobileActionBar />
     </div>
   );
 };
