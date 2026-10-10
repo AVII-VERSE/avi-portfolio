@@ -34,7 +34,7 @@ const Header = ({ onSectionClick, onResumeClick }: HeaderProps) => {
 
   return (
     <>
-      <header className="fixed top-0 w-full z-40 bg-background/90 backdrop-blur-md border-b border-border/40">
+      <header className="fixed top-0 w-full z-40 bg-background/15 backdrop-blur-md transition-all duration-300">
         <div className="w-full px-4 sm:px-8 lg:px-12 py-3.5 sm:py-4">
           <div className="flex items-center justify-between w-full">
             {/* Logo */}
