@@ -83,14 +83,11 @@ const AboutSection = () => {
                 </h3>
                 <div className="space-y-4">
                   <p className="text-foreground/80 leading-relaxed text-lg">
-                    I'm a{" "}
+                    I'm an{" "}
                     <span className="font-semibold text-foreground">
-                      VAPT & Red Team Security Analyst
+                      Aspiring VAPT & Security Analyst
                     </span>{" "}
-                    focused on offensive security,
-                    Linux, network security, and automation. I am building
-                    practical skills through labs, projects, and verified
-                    cybersecurity learning.
+                    currently pursuing my M.Tech in Cyber Security. Passionate about offensive security, Linux, and security automation, I focus on understanding real-world attack vectors, exploring OWASP Top 10 vulnerabilities, and developing practical security tools through continuous hands-on lab research.
                   </p>
                 </div>
               </div>
