@@ -68,16 +68,9 @@ const ContactSection = () => {
       setError(true);
       toast({
         variant: "destructive",
-        title: "Direct Gmail delivery issue",
-        description: err.message || "Opening your mail client directly...",
+        title: "Message Delivery Failed",
+        description: err.message || "Could not send message. Please try again or email as8009067@gmail.com directly.",
       });
-
-      // Direct fallback: Open email client with pre-filled content
-      window.location.href = `mailto:${EMAIL}?subject=${encodeURIComponent(
-        emailSubject
-      )}&body=${encodeURIComponent(
-        `Hi Avinash,\n\nName: ${name}\nEmail: ${email}\nCompany: ${company || "N/A"}\n\nMessage:\n${message}`
-      )}`;
     } finally {
       setIsLoading(false);
     }
