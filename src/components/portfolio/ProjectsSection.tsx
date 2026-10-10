@@ -61,10 +61,10 @@ const ProjectsSection = () => {
         </Reveal>
 
         {/* Featured Projects List */}
-        <div className="space-y-24 mt-16">
+        <div className="space-y-12 sm:space-y-20 md:space-y-24 mt-10 sm:mt-16">
           {featuredProjects.map((project) => (
             <Reveal key={project.title}>
-              <div className="grid md:grid-cols-2 gap-10 lg:gap-12 items-center neobrutalist-card md:relative p-6 md:p-8 bg-card border-2 border-border">
+              <div className="grid md:grid-cols-2 gap-8 lg:gap-12 items-center neobrutalist-card md:relative p-4 sm:p-6 md:p-8 bg-card border-2 border-border">
                 {/* Project Visual Banner */}
                 <div className="relative group overflow-hidden border-2 border-border rounded-none shadow-brutal transition-transform duration-300 group-hover:scale-[1.01]">
                   {project.banner}
@@ -85,7 +85,7 @@ const ProjectsSection = () => {
                     </p>
                   </div>
 
-                  <div className="relative bg-card/95 border-2 border-border p-5 md:p-6 shadow-brutal">
+                  <div className="relative bg-card/95 border-2 border-border p-4 sm:p-5 md:p-6 shadow-brutal">
                     <p className="text-foreground/85 leading-relaxed text-sm">
                       {project.description}
                     </p>
@@ -102,12 +102,12 @@ const ProjectsSection = () => {
                     ))}
                   </div>
 
-                  <div className="flex items-center gap-4 pt-2">
+                  <div className="flex flex-wrap items-center gap-3 pt-2">
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="neobrutalist-button neobrutalist-button-primary px-5 py-2.5 text-xs inline-flex items-center gap-2 group/btn"
+                      className="neobrutalist-button neobrutalist-button-primary px-4 sm:px-5 py-2.5 text-xs inline-flex items-center gap-2 group/btn"
                       aria-label={`View ${project.title} source code on GitHub`}
                     >
                       <Github size={16} className="relative z-10" />

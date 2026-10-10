@@ -94,7 +94,7 @@ const ContactSection = () => {
           </Reveal>
 
           <Reveal>
-            <div className="neobrutalist-card p-6 sm:p-8 relative overflow-hidden bg-card">
+            <div className="neobrutalist-card p-4 sm:p-6 md:p-8 relative overflow-hidden bg-card">
               <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
                   <div>

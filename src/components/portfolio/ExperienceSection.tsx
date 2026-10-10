@@ -24,7 +24,7 @@ const ExperienceSection = () => {
         <FadeInStagger className="space-y-8">
           {experiences.map((exp, index) => (
             <FadeInItem key={index}>
-              <div className="neobrutalist-card p-6 md:p-8 transition-all">
+              <div className="neobrutalist-card p-4 sm:p-6 md:p-8 transition-all">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-4 mb-6">
                   <div>
                     <h3 className="text-xl font-bold text-foreground">

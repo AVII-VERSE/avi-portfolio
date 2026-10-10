@@ -74,7 +74,7 @@ const AboutSection = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
           <Reveal delay={0.1} className="lg:col-span-2">
-            <div className="h-full neobrutalist-card p-6 sm:p-8 relative overflow-hidden group bg-card transition-all flex flex-col justify-between">
+            <div className="h-full neobrutalist-card p-4 sm:p-6 md:p-8 relative overflow-hidden group bg-card transition-all flex flex-col justify-between">
               <div className="absolute top-0 right-0 w-32 h-32 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2" />
               <div className="relative z-10">
                 <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
@@ -116,7 +116,7 @@ const AboutSection = () => {
           </Reveal>
 
           <Reveal delay={0.3} className="lg:col-span-2">
-            <div className="h-full neobrutalist-card p-6 sm:p-8 relative group transition-all bg-card">
+            <div className="h-full neobrutalist-card p-4 sm:p-6 md:p-8 relative group transition-all bg-card">
               <h3 className="text-xl font-bold text-foreground mb-6 flex items-center gap-2">
                 <GraduationCap className="w-5 h-5 text-secondary" />
                 Education
@@ -157,7 +157,7 @@ const AboutSection = () => {
           </Reveal>
 
           <Reveal delay={0.4} className="md:col-span-3">
-            <div className="neobrutalist-card p-6 sm:p-8 bg-card border border-border transition-all duration-300">
+            <div className="neobrutalist-card p-4 sm:p-6 md:p-8 bg-card border border-border transition-all duration-300">
               <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-6 sm:mb-8">
                 <h3 className="text-lg sm:text-xl font-bold text-foreground flex items-center gap-3">
                   <WiStars size={24} className="text-primary shrink-0" />

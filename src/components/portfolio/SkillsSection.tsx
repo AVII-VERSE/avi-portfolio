@@ -111,7 +111,7 @@ const SkillsSection = () => {
         </Reveal>
 
         <Reveal>
-          <div className="skills-shell mt-16 p-6 md:p-8 relative overflow-hidden bg-background border border-border">
+          <div className="skills-shell mt-12 sm:mt-16 p-4 sm:p-6 md:p-8 relative overflow-hidden bg-background border border-border">
             <div className="absolute inset-0 bg-background backdrop-blur-[1px] z-0" />
             <div className="absolute inset-0 pointer-events-none z-[1] opacity-[0.15]">
               <DotGrid
@@ -127,7 +127,7 @@ const SkillsSection = () => {
                 returnDuration={1.5}
               />
             </div>
-            <div className="relative z-[2] flex flex-col md:flex-row gap-8">
+            <div className="relative z-[2] flex flex-col md:flex-row gap-6 md:gap-8">
               {/* Tab Selector */}
               <div className="flex flex-row md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 shrink-0">
                 {categories.map((cat) => (
@@ -135,7 +135,7 @@ const SkillsSection = () => {
                     key={cat.name}
                     onClick={() => setActiveCategory(cat.name)}
                     className={cn(
-                      "px-5 py-3 text-sm font-bold uppercase tracking-wider transition-all border-2",
+                      "px-3.5 sm:px-5 py-2.5 sm:py-3 text-xs sm:text-sm font-bold uppercase tracking-wider transition-all border-2 whitespace-nowrap",
                       activeCategory === cat.name
                         ? "bg-primary text-primary-foreground border-primary translate-y-0.5"
                         : "bg-card hover:translate-y-[-2px] border-border shadow-brutal"
@@ -148,7 +148,7 @@ const SkillsSection = () => {
 
               {/* Content Grid */}
               <div className="flex-1">
-                <FadeInStagger key={activeCategory} className="flex flex-wrap gap-4">
+                <FadeInStagger key={activeCategory} className="flex flex-wrap gap-3 sm:gap-4">
                   {categories
                     .find((c) => c.name === activeCategory)
                     ?.items.map((skillName) => {

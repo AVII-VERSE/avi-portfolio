@@ -117,29 +117,29 @@ const Footer = () => {
             <h3 className="text-xs font-mono uppercase tracking-widest text-primary font-bold text-center lg:text-left">
               // Get In Touch
             </h3>
-            <div className="flex flex-wrap justify-center lg:justify-start gap-4">
+            <div className="flex flex-wrap justify-center lg:justify-start gap-3 sm:gap-4">
               {SOCIAL_LINKS.map(({ icon: Icon, href, label }) => (
                 <a
                   key={label}
                   href={href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="group flex items-center gap-3 px-6 py-3 bg-card border-2 border-primary transition-all duration-200 hover:translate-y-[-2px] hover:shadow-brutal"
+                  className="group flex items-center gap-2.5 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 bg-card border-2 border-primary transition-all duration-200 hover:translate-y-[-2px] hover:shadow-brutal"
                   aria-label={label}
                 >
-                  <Icon className="w-5 h-5 text-primary dark:text-secondary" />
-                  <span className="font-bold text-sm uppercase tracking-wider text-foreground group-hover:text-primary transition-colors">
+                  <Icon className="w-4 sm:w-5 h-4 sm:h-5 text-primary dark:text-secondary" />
+                  <span className="font-bold text-xs sm:text-sm uppercase tracking-wider text-foreground group-hover:text-primary transition-colors">
                     {label}
                   </span>
                 </a>
               ))}
               <a
                 href={`mailto:${EMAIL}`}
-                className="group flex items-center gap-3 px-6 py-3 bg-card border-2 border-primary transition-all duration-200 hover:translate-y-[-2px] hover:shadow-brutal"
+                className="group flex items-center gap-2.5 sm:gap-3 px-4 sm:px-6 py-2.5 sm:py-3 bg-card border-2 border-primary transition-all duration-200 hover:translate-y-[-2px] hover:shadow-brutal"
                 aria-label="Send Email"
               >
-                <Mail className="w-5 h-5 text-primary dark:text-secondary" />
-                <span className="font-bold text-sm uppercase tracking-wider text-foreground group-hover:text-primary transition-colors">
+                <Mail className="w-4 sm:w-5 h-4 sm:h-5 text-primary dark:text-secondary" />
+                <span className="font-bold text-xs sm:text-sm uppercase tracking-wider text-foreground group-hover:text-primary transition-colors">
                   Mail
                 </span>
               </a>

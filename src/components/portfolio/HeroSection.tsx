@@ -75,13 +75,13 @@ const HeroSection = ({ onSectionClick }: HeroSectionProps) => {
               <div className="relative z-10 flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center lg:justify-start mt-10 sm:mt-12">
                 <button
                   onClick={() => onSectionClick("projects")}
-                  className="neobrutalist-button neobrutalist-button-primary px-8 py-4 text-lg group"
+                  className="neobrutalist-button neobrutalist-button-primary px-6 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg group"
                 >
                   <span className="relative z-10">View Security Work</span>
                 </button>
                 <button
                   onClick={() => onSectionClick("contact")}
-                  className="neobrutalist-button neobrutalist-button-secondary px-8 py-4 text-lg group"
+                  className="neobrutalist-button neobrutalist-button-secondary px-6 sm:px-8 py-3.5 sm:py-4 text-base sm:text-lg group"
                 >
                   <span className="relative z-10">Get In Touch</span>
                 </button>
