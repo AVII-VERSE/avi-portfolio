@@ -110,8 +110,31 @@ export default async function handler(req: any, res: any) {
     company = (typeof company === "string" ? company.trim() : "").slice(0, 100);
     message = message.trim().slice(0, 3000);
 
-    const gmailUser = process.env.GMAIL_USER || "as8009067@gmail.com";
-    const rawAppPassword = process.env.GMAIL_APP_PASSWORD || "";
+    const gmailUser =
+      process.env.GMAIL_USER ||
+      process.env.VITE_GMAIL_USER ||
+      "as8009067@gmail.com";
+
+    let rawAppPassword =
+      process.env.GMAIL_APP_PASSWORD ||
+      process.env.VITE_GMAIL_APP_PASSWORD ||
+      process.env.GMAIL_PASSWORD ||
+      process.env.APP_PASSWORD ||
+      "";
+
+    // Fallback: search for any env key containing GMAIL or PASSWORD
+    if (!rawAppPassword) {
+      for (const [key, value] of Object.entries(process.env)) {
+        const upper = key.toUpperCase();
+        if ((upper.includes("GMAIL") && upper.includes("PASS")) || upper === "APP_PASSWORD") {
+          if (value && typeof value === "string") {
+            rawAppPassword = value;
+            break;
+          }
+        }
+      }
+    }
+
     const gmailAppPassword = rawAppPassword.replace(/\s+/g, "");
 
     if (!gmailAppPassword) {
@@ -127,6 +150,8 @@ export default async function handler(req: any, res: any) {
         user: gmailUser,
         pass: gmailAppPassword,
       },
+      connectionTimeout: 15000,
+      greetingTimeout: 10000,
     });
 
     const safeName = escapeHtml(name);
