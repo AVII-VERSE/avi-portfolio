@@ -82,7 +82,6 @@ const ContactSection = () => {
               <div className="neobrutalist-card p-6 space-y-3 text-center">
                 <p className="font-bold text-foreground">Avinash Singh</p>
                 <a className="block text-primary hover:underline" href="mailto:as8009067@gmail.com">as8009067@gmail.com</a>
-                <a className="block text-foreground/80 hover:text-primary" href="tel:+919173272178">+91 91732 72178</a>
                 <p className="text-foreground/70">Surat, Gujarat, India</p>
                 <div className="flex justify-center gap-4 pt-2 text-sm">
                   <a className="text-primary hover:underline" href="https://linkedin.com/in/singhavinash10" target="_blank" rel="noopener noreferrer">LinkedIn</a>

@@ -151,7 +151,7 @@ const Header = ({ onSectionClick }: HeaderProps) => {
                   className="w-full neobrutalist-button neobrutalist-button-primary py-3 text-center text-sm font-bold flex items-center justify-center gap-2 group"
                 >
                   <FileText className="w-4 h-4 relative z-10" />
-                  <span className="relative z-10">View Resume (Pending)</span>
+                  <span className="relative z-10">View Resume</span>
                 </Link>
 
                 {/* Social Icons Row */}
