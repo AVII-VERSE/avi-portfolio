@@ -65,12 +65,17 @@ const Footer = () => {
 
               {/* Availability Badge */}
               <div>
-                <div className="inline-flex items-center gap-3 px-4 py-2.5 bg-card border-2 border-primary transition-all duration-200 group hover:shadow-[0_0_12px_hsl(var(--primary)/0.4)] dark:border-secondary dark:hover:shadow-[0_0_12px_hsl(var(--secondary)/0.4)]">
+                <button
+                  type="button"
+                  onClick={() => scrollToSection("contact")}
+                  className="inline-flex items-center gap-3 px-4 py-2.5 bg-card border-2 border-primary transition-all duration-200 group hover:shadow-[0_0_12px_hsl(var(--primary)/0.4)] dark:border-secondary dark:hover:shadow-[0_0_12px_hsl(var(--secondary)/0.4)] hover:-translate-y-0.5 cursor-pointer text-left"
+                  title="Click to get in touch"
+                >
                   <div className="w-2.5 h-2.5 bg-green-500 rounded-full animate-pulse" />
-                  <span className="text-sm font-bold text-foreground">
+                  <span className="text-sm font-bold text-foreground group-hover:text-primary transition-colors">
                     Open to opportunities
                   </span>
-                </div>
+                </button>
               </div>
             </div>
           </Reveal>
