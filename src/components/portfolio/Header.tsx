@@ -102,11 +102,11 @@ const Header = ({ onSectionClick, onResumeClick }: HeaderProps) => {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 26, stiffness: 280 }}
-              className="absolute top-0 right-0 h-full w-[85%] max-w-[340px] bg-card border-l-2 border-border shadow-2xl flex flex-col justify-between p-6 overflow-y-auto"
+              className="absolute top-0 right-0 h-full w-[85%] max-w-[340px] bg-card/85 backdrop-blur-md border-l border-border/50 shadow-2xl flex flex-col justify-between p-6 overflow-y-auto"
             >
               {/* Drawer Top */}
               <div>
-                <div className="flex items-center justify-between pb-5 border-b border-border">
+                <div className="flex items-center justify-between pb-5 border-b border-border/60">
                   <div className="flex items-center gap-3">
                     <Logo size="sm" />
                     <div>
@@ -120,7 +120,7 @@ const Header = ({ onSectionClick, onResumeClick }: HeaderProps) => {
                   </div>
                   <button
                     onClick={() => setMobileMenuOpen(false)}
-                    className="p-1.5 border-2 border-border hover:border-primary text-foreground hover:text-primary transition-colors"
+                    className="p-1.5 border-2 border-border/80 hover:border-primary text-foreground hover:text-primary transition-colors bg-background/40 backdrop-blur-sm"
                     aria-label="Close menu"
                   >
                     <X className="w-5 h-5" />
@@ -128,19 +128,14 @@ const Header = ({ onSectionClick, onResumeClick }: HeaderProps) => {
                 </div>
 
                 {/* Section Links */}
-                <nav className="py-6 space-y-2">
-                  {NAV_ITEMS.map((item, index) => (
+                <nav className="py-6 space-y-1.5">
+                  {NAV_ITEMS.map((item) => (
                     <button
                       key={item.id}
                       onClick={() => handleNavClick(item.id)}
-                      className="w-full flex items-center justify-between px-3 py-3 rounded-none text-left font-bold text-lg text-foreground hover:text-primary hover:bg-primary/5 border border-transparent hover:border-primary/30 transition-all duration-200 group"
+                      className="w-full flex items-center justify-between px-3.5 py-3 rounded-none text-left font-bold text-lg text-foreground hover:text-primary hover:bg-primary/10 border border-transparent hover:border-primary/20 transition-all duration-200 group"
                     >
-                      <span className="flex items-center gap-3">
-                        <span className="font-mono text-xs text-primary/70">
-                          0{index + 1}.
-                        </span>
-                        <span>{item.label}</span>
-                      </span>
+                      <span className="tracking-tight">{item.label}</span>
                       <ArrowRight className="w-4 h-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all text-primary" />
                     </button>
                   ))}
@@ -148,7 +143,7 @@ const Header = ({ onSectionClick, onResumeClick }: HeaderProps) => {
               </div>
 
               {/* Drawer Bottom Actions */}
-              <div className="pt-6 border-t border-border space-y-5">
+              <div className="pt-6 border-t border-border/60 space-y-5">
                 {/* Resume Link */}
                 <button
                   onClick={() => {
